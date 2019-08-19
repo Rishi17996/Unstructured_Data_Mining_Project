@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Wizard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/display_result.css') }}">
+  </head>
+  <body>
+    <div align="center" id="search_bar">
+      <h1>Search Wizard</h1>
+    <form action="http://localhost:5000/allResults" method="POST">
+      <input id="search_box" type="text" size="50px" name="query"/></br>
+      <input class="radio_button" type="radio" name="search_type" value="bs"><span>Boolean Search</span></input>
+      <input class="radio_button" type="radio" name="search_type"
+             value="vsm" checked><span>Free Text Search</span></input>
+      <input type="submit"/ value="Search">
+    </form>
+    </div>
+    <header>
+      <div class="nav_container">
+        <p><nav>
+          <ul>
+            <li><a href="{{ url_for('allResults') }}">All</a></li>
+            <li><a href="{{ url_for('businessResults') }}">Business</a></li>
+            <li><a href="{{ url_for('entertainmentResults') }}">Entertainment</a></li>
+            <li><a href="{{ url_for('politicsResults') }}">Politics</a></li>
+            <li><a href="{{ url_for('sportResults') }}">Sports</a></li>
+            <li><a href="{{ url_for('technologyResults') }}">Technology</a></li>
+          </ul>
+        </nav></p>
+      </div>
+    </header>
+    <div id="all_documents">
+    {% for value in result %}
+    <form action="http://localhost:5000/resultContent" method="POST">
+      <p><input size="100px" class="doc_text_box" name="doc" value="{{ value }}" readonly>
+      <input type="image" src="{{ url_for('static',filename='styles/white_arrow.jpg') }}" width="30" height="30" alt="Show Document" /></br></p>
+    </form>
+    {% endfor %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+      <title> Search Wizard </title>
+      <link rel="stylesheet" type="text/css"
+            href="{{ url_for('static',filename='styles/home.css') }}">
+  </head>
+  <body>
+    <div>
+        <h1>Search Wizard</h1>
+        <h2>Search for news articles... </h2>
+      <form action="http://localhost:5000/allResults" method="POST">
+        <input id="search_box" type="text" size="50px" name="query" placeholder="Enter search query here"/></br>
+        <input class="radio_button" type="radio" name="search_type" value="bs">Boolean Search</input>
+        <input class="radio_button" type="radio" name="search_type"
+               value="vsm" checked>Free Text Search</input>
+        <input id="s" type="submit"/ value="Search">
+      </form>
+    </div>
+  </body>
+</html>
